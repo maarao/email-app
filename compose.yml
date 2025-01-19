@@ -16,7 +16,7 @@ services:
     develop:
       watch:
         - action: rebuild
-          path: ./backend # Since fastapi is being production served, hot-reloading is disabled
+          path: ./backend # workaround for reloading production-served fastapi
 
   frontend:
     build:
