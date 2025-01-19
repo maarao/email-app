@@ -19,6 +19,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules  # Preserve node_modules
     environment:
       - NODE_ENV=development
     restart: unless-stopped
