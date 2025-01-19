@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3001
 
 # Start the development server with hot reloading
-CMD ["npm", "run", "dev", '-p', '3001']
+CMD ["npm", "run", "dev", "--", "--port", "3001", "--turbo"]
