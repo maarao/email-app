@@ -23,12 +23,13 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
     volumes:
       - ./frontend:/app
       - /app/node_modules  # Preserve node_modules
     environment:
       - NODE_ENV=development
+      - FRONTEND_PORT=${FRONTEND_PORT}
       - BACKEND_URL=${BACKEND_URL}
       - BACKEND_PORT=${BACKEND_PORT}
     restart: unless-stopped

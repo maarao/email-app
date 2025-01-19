@@ -12,4 +12,4 @@ RUN npm ci
 COPY . .
 
 # Start the development server with hot reloading
-CMD ["npm", "run", "dev", "--", "--port", "3001", "--turbo"]
+CMD npm run dev -- --port ${FRONTEND_PORT}
