@@ -12,6 +12,10 @@ services:
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
+    develop:
+      watch:
+        - action: rebuild
+          path: ./backend # Since fastapi is being production served, hot-reloading is disabled
 
   frontend:
     build:
@@ -25,3 +29,7 @@ services:
     environment:
       - NODE_ENV=development
     restart: unless-stopped
+    develop:
+      watch:
+        - action: rebuild
+          path: ./frontend/package.json
