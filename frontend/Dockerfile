@@ -11,8 +11,5 @@ RUN npm ci
 # Copy the rest of the application
 COPY . .
 
-# Expose port 3001 for Next.js development server
-EXPOSE 3001
-
 # Start the development server with hot reloading
 CMD ["npm", "run", "dev", "--", "--port", "3001", "--turbo"]
