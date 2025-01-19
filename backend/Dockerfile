@@ -18,8 +18,5 @@ RUN uv pip install -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 8000
-
 # Command to run the application
-CMD ["fastapi", "dev", "main.py"]
+CMD ["fastapi", "run", "--host", "0.0.0.0", "--port", "8000"]
