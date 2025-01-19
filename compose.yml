@@ -5,10 +5,17 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - /app/.venv  # Preserve virtual environment
     environment:
       - PYTHONDONTWRITEBYTECODE=1
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
+    develop:
+      watch:
+        - action: rebuild
+          path: ./backend # Since fastapi is being production served, hot-reloading is disabled
 
   frontend:
     build:
@@ -16,6 +23,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules  # Preserve node_modules
     environment:
       - NODE_ENV=development
     restart: unless-stopped
+    develop:
+      watch:
+        - action: rebuild
+          path: ./frontend/package.json
