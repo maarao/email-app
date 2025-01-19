@@ -1,27 +1,33 @@
-import { Button } from "@/components/ui/button";
-
-async function getData() {
-  const res = await fetch('http://' + process.env.BACKEND_URL + ':' + process.env.BACKEND_PORT + '/api/v1/hello', {
-    // Add cache: 'no-store' if you want fresh data on every request
-    // or use { next: { revalidate: 60 } } to revalidate every 60 seconds
-    cache: 'no-store'
-  });
-  
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  
-  return res.json();
-}
+import { cookies } from "next/headers"
+import { Mail } from "@/components/mail"
+import { accounts, mails } from "@/components/mail/data"
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable"
 
 export default async function Home() {
-  const data = await getData();
-  
+  const cookieStore = await cookies()
+  const layout = cookieStore.get("react-resizable-panels:layout")
+  const collapsed = cookieStore.get("react-resizable-panels:collapsed")
+
+  const defaultLayout = layout ? JSON.parse(layout.value) : undefined
+  const defaultCollapsed = collapsed ? JSON.parse(collapsed.value) : undefined
+
   return (
-    <main>
-      <h1>Welcome to My Fullstack App</h1>
-      {data.message && <p>{data.message}</p>}
-      <Button>Shad</Button>
-    </main>
-  );
+    <div className="h-screen">
+      <div className="hidden flex-col md:flex h-full">
+        <Mail
+          accounts={accounts}
+          mails={mails}
+          defaultLayout={defaultLayout}
+          defaultCollapsed={defaultCollapsed}
+          navCollapsedSize={4}
+        />
+      </div>
+      <div className="block md:hidden p-8 text-center">
+        <h1 className="text-2xl font-bold mb-4">Please use a larger screen</h1>
+        <p className="text-muted-foreground">
+          This email application is optimized for desktop and tablet views.
+        </p>
+      </div>
+    </div>
+  )
 }
