@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 async function getData() {
   const res = await fetch('http://' + process.env.BACKEND_URL + ':' + process.env.BACKEND_PORT + '/api/v1/hello', {
     // Add cache: 'no-store' if you want fresh data on every request
@@ -19,6 +21,7 @@ export default async function Home() {
     <main>
       <h1>Welcome to My Fullstack App</h1>
       {data.message && <p>{data.message}</p>}
+      <Button>Shad</Button>
     </main>
   );
 }
