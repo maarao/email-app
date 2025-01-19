@@ -18,5 +18,8 @@ RUN uv pip install -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
+# Set default backend port
+ENV BACKEND_PORT=8000
+
 # Command to run the application
-CMD ["fastapi", "run", "--host", "0.0.0.0", "--port", "8000"]
+CMD fastapi run --host 0.0.0.0 --port ${BACKEND_PORT}
