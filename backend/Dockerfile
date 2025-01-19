@@ -19,4 +19,4 @@ RUN uv pip install -r requirements.txt
 COPY . .
 
 # Command to run the application
-CMD ["fastapi", "dev", "main.py"]
+CMD ["fastapi", "run", "--host", "0.0.0.0", "--port", "8000"]
