@@ -10,7 +10,7 @@ A mail client that does what I want it to looking how I want it to look (hopeful
 - Hot-reload enabled for development
 
 ### Frontend
-- Next.js (15)
+- Next.js 15
 - Development server with hot-reload
 
 ## Prerequisites
