@@ -35,7 +35,7 @@ import { MailDisplay } from "@/app/components/mail-display"
 import { MailList } from "@/app/components/mail-list"
 import { Nav } from "@/app/components/nav"
 import { type Mail } from "@/app/data"
-import { useMail } from "@/app/use-mail"
+import { useMail } from "@/hooks/use-mail"
 
 interface MailProps {
   accounts: {

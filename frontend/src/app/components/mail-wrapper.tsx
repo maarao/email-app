@@ -2,7 +2,7 @@
 
 import { Mail } from "@/app/components/mail"
 import { type Mail as MailType, type Account } from "@/app/data"
-import { MailProvider } from "@/app/use-mail"
+import { MailProvider } from "@/hooks/use-mail"
 
 interface MailWrapperProps {
   accounts: Account[]
