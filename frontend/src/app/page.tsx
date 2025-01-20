@@ -1,10 +1,6 @@
-'use client'
-
 import Image from "next/image"
-
-import { Mail } from "@/app/components/mail"
+import { MailWrapper } from "@/app/components/mail-wrapper"
 import { accounts, mails } from "@/app/data"
-import { MailProvider } from "@/app/use-mail"
 
 export default function MailPage() {
   return (
@@ -26,15 +22,13 @@ export default function MailPage() {
         />
       </div>
       <div className="hidden flex-col md:flex">
-        <MailProvider>
-          <Mail
-            accounts={accounts}
-            mails={mails}
-            defaultLayout={undefined}
-            defaultCollapsed={undefined}
-            navCollapsedSize={4}
-          />
-        </MailProvider>
+        <MailWrapper
+          accounts={accounts}
+          mails={mails}
+          defaultLayout={undefined}
+          defaultCollapsed={undefined}
+          navCollapsedSize={4}
+        />
       </div>
     </>
   )
