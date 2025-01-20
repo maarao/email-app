@@ -6,19 +6,31 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Mail } from "@/app/data"
+import { useMail } from "@/app/use-mail"
 
 interface MailListProps {
   items: Mail[]
 }
 
 export function MailList({ items }: MailListProps) {
+  const [mail, setMail] = useMail()
+
   return (
     <ScrollArea className="h-screen">
       <div className="flex flex-col gap-2 p-4 pt-0">
         {items.map((item) => (
           <button
             key={item.id}
-            className="flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent"
+            className={cn(
+              "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
+              mail.selected === item.id && "bg-muted"
+            )}
+            onClick={() =>
+              setMail({
+                ...mail,
+                selected: item.id,
+              })
+            }
           >
             <div className="flex w-full flex-col gap-1">
               <div className="flex items-center">
@@ -28,7 +40,14 @@ export function MailList({ items }: MailListProps) {
                     <span className="flex h-2 w-2 rounded-full bg-blue-600" />
                   )}
                 </div>
-                <div className="ml-auto text-xs text-muted-foreground">
+                <div
+                  className={cn(
+                    "ml-auto text-xs",
+                    mail.selected === item.id
+                      ? "text-foreground"
+                      : "text-muted-foreground"
+                  )}
+                >
                   {formatDistanceToNow(new Date(item.date), {
                     addSuffix: true,
                   })}

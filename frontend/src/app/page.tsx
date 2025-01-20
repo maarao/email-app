@@ -1,4 +1,6 @@
+import { cookies } from "next/headers"
 import Image from "next/image"
+
 import { Mail } from "@/app/components/mail"
 import { accounts, mails } from "@/app/data"
 
@@ -25,8 +27,8 @@ export default function MailPage() {
         <Mail
           accounts={accounts}
           mails={mails}
-          defaultLayout={[25, 50, 25]}
-          defaultCollapsed={false}
+          defaultLayout={undefined}
+          defaultCollapsed={undefined}
           navCollapsedSize={4}
         />
       </div>
