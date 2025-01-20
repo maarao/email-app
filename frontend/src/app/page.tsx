@@ -5,12 +5,12 @@ import { MailProvider } from "@/hooks/use-mail"
 export default function MailPage() {
   return (
     <>
-      <div className="flex flex-col">
+      <div className="h-screen flex flex-col">
         <MailProvider>
           <Mail
             accounts={accounts}
             mails={mails}
-            defaultLayout={undefined}
+            defaultLayout={[20, 32, 48]}
             defaultCollapsed={undefined}
             navCollapsedSize={4}
           />
