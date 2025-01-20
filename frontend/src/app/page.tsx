@@ -5,7 +5,7 @@ import { MailProvider } from "@/hooks/use-mail"
 export default function MailPage() {
   return (
     <>
-      <div className="hidden flex-col md:flex">
+      <div className="flex flex-col">
         <MailProvider>
           <Mail
             accounts={accounts}
