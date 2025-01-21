@@ -16,8 +16,8 @@ services:
     build: 
       context: ./backend
       dockerfile: Dockerfile
-    # ports:
-    #   - "${BACKEND_PORT}:${BACKEND_PORT}"
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
     volumes:
       - ./backend:/app
       - /app/.venv  # Preserve virtual environment
